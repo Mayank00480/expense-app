@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-const ExpenseForm = ({expenseKey , setExpenseKey}) => {
+const ExpenseForm = ({expenseKey , setExpenseKey , expenseData , setExpenseData}) => {
     console.log(expenseKey , 'in expense form');
-  const [expenseData, setExpenseData] = useState({
-    title: '',
-    amount: '',
-    date: ''
-  });
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;

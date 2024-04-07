@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-const ExpenseDetails = ({expenseKey , setExpenseKey}) => {
+const ExpenseDetails = ({expenseKey , setExpenseKey,expense}) => {
   const [expenseData , setExpenseData] = useState([]);
   console.log(expenseKey , 'in expense Details');
   useEffect(() => {
@@ -32,7 +32,20 @@ const ExpenseDetails = ({expenseKey , setExpenseKey}) => {
     })
 
 
-        }}> Delete </button></li>
+        }}> Delete </button>
+         <button onClick={() => {
+          axios.patch(`http://localhost:4000/editProduct/${item.id}`,expense)
+          .then(res => {
+            console.log(res);
+            setExpenseKey(true);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+         }}> Edit </button>
+
+
+        </li>
       })}
     </ul>
   )

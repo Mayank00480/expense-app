@@ -33,3 +33,17 @@ exports.deleteProduct = (req ,res, next) => {
         console.log(err);
     })
 }
+
+exports.editProduct = (req,res,next) => {
+    const {id} = req.params;
+    
+    const {title , amount,date} = req.body;
+    console.log(id ,title ,amount , date)
+    Expense.editProduct(id ,title ,amount , date)
+     .then(resp => {
+         res.json(resp);
+     })
+     .catch(err => {
+         console.log(err);
+     })
+}
